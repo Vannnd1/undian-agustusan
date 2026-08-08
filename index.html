@@ -337,7 +337,7 @@
     </main>
 
     <!-- Right Sidebar Fixed: Daftar Pemenang -->
-    <div id="sidebar-history" class="fixed top-20 right-4 z-30 w-72 flex flex-col transition-all duration-300">
+    <div id="sidebar-history" class="fixed top-24 md:top-20 right-4 left-4 md:left-auto z-40 md:w-72 flex flex-col items-end transition-all duration-300">
         <!-- Toggle Button -->
         <button id="sidebar-toggle-btn" class="self-end mb-2 px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all shadow-xl" style="background:rgba(206,17,38,0.85); border:1px solid rgba(255,215,0,0.3); color:white; backdrop-filter:blur(10px);" title="Tampilkan/Sembunyikan Riwayat">
             🏆 <span id="sidebar-toggle-label">Pemenang</span>
@@ -1305,12 +1305,16 @@
         const sidebarToggleBtn = document.getElementById('sidebar-toggle-btn');
         const sidebarPanel = document.getElementById('sidebar-panel');
         const sidebarToggleLabel = document.getElementById('sidebar-toggle-label');
-        let sidebarOpen = true;
+        
+        // Auto-close on mobile by default so it doesn't block UI
+        let sidebarOpen = window.innerWidth > 768;
+        sidebarPanel.style.display = sidebarOpen ? 'flex' : 'none';
+        sidebarToggleLabel.innerText = sidebarOpen ? 'Sembunyikan' : 'Pemenang';
 
         sidebarToggleBtn.addEventListener('click', () => {
             sidebarOpen = !sidebarOpen;
             sidebarPanel.style.display = sidebarOpen ? 'flex' : 'none';
-            sidebarToggleLabel.innerText = sidebarOpen ? 'Sembunyikan' : 'Riwayat';
+            sidebarToggleLabel.innerText = sidebarOpen ? 'Sembunyikan' : 'Pemenang';
         });
 
         // Auto-show sidebar when a winner is added
