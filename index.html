@@ -369,25 +369,25 @@
 
     <!-- Winner Modal HUT RI -->
     <div id="winner-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden transition-opacity" style="background:rgba(0,0,0,0.85); backdrop-filter:blur(16px);">
-        <div class="relative w-full max-w-md mx-4 rounded-3xl p-8 text-center animate-modal overflow-hidden gold-glow" style="background: linear-gradient(145deg, #1a0505, #2d0808); border: 2px solid rgba(255,215,0,0.5);">
+        <div class="relative w-full max-w-2xl mx-4 rounded-3xl p-10 md:p-14 text-center animate-modal overflow-hidden gold-glow" style="background: linear-gradient(145deg, #1a0505, #2d0808); border: 2px solid rgba(255,215,0,0.5);">
             <!-- Strip merah putih atas -->
-            <div class="absolute top-0 left-0 right-0 h-2 flex rounded-t-3xl overflow-hidden">
+            <div class="absolute top-0 left-0 right-0 h-3 flex rounded-t-3xl overflow-hidden">
                 <div class="flex-1" style="background:#CE1126;"></div>
                 <div class="flex-1" style="background:#ffffff;"></div>
                 <div class="flex-1" style="background:#CE1126;"></div>
                 <div class="flex-1" style="background:#ffffff;"></div>
             </div>
             <!-- Badge header -->
-            <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full font-black text-sm uppercase tracking-widest shadow-lg mb-4 mt-2" style="background: linear-gradient(135deg,#FFD700,#FFA500); color:#1a0505;">
+            <div class="inline-flex items-center gap-2 px-8 py-3 rounded-full font-black text-lg md:text-xl uppercase tracking-widest shadow-lg mb-6 mt-2" style="background: linear-gradient(135deg,#FFD700,#FFA500); color:#1a0505;">
                 🎉 SELAMAT PEMENANG! 🎉
             </div>
             <!-- Nomor pemenang -->
-            <div class="my-5 py-6 rounded-2xl relative overflow-hidden" style="background:rgba(255,255,255,0.04); border:1.5px solid rgba(255,215,0,0.3);">
-                <div class="text-[13px] font-bold uppercase tracking-widest mb-2" style="color:rgba(255,255,255,0.4);">Nomor Beruntung</div>
-                <div id="modal-winner-number" class="font-black tracking-widest font-mono" style="font-size:clamp(3rem,10vw,5rem); background:linear-gradient(135deg,#FFD700,#FFA500,#FFD700); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; filter:drop-shadow(0 0 20px rgba(255,215,0,0.6));">000</div>
+            <div class="my-6 py-10 rounded-2xl relative overflow-hidden" style="background:rgba(255,255,255,0.04); border:2px solid rgba(255,215,0,0.3);">
+                <div class="text-lg md:text-xl font-bold uppercase tracking-widest mb-4" style="color:rgba(255,255,255,0.4);">Nomor Beruntung</div>
+                <div id="modal-winner-number" class="font-black tracking-widest font-mono" style="font-size:clamp(5rem,15vw,9rem); line-height:1; background:linear-gradient(135deg,#FFD700,#FFA500,#FFD700); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; filter:drop-shadow(0 0 30px rgba(255,215,0,0.7));">000</div>
             </div>
-            <p class="text-sm mb-6" style="color:rgba(255,255,255,0.5);">Tunjukkan nomor ini kepada panitia acara 🙌</p>
-            <button id="close-modal-btn" class="btn-merdeka w-full py-4 font-black text-base uppercase tracking-wider rounded-xl shadow-lg transition-all transform active:scale-95" style="color:white;">
+            <p class="text-base md:text-lg mb-8" style="color:rgba(255,255,255,0.5);">Tunjukkan nomor ini kepada panitia acara 🙌</p>
+            <button id="close-modal-btn" class="btn-merdeka w-full py-5 font-black text-xl uppercase tracking-wider rounded-2xl shadow-lg transition-all transform active:scale-95" style="color:white;">
                 🎯 Lanjutkan Undian
             </button>
             <!-- Bintang dekorasi -->
