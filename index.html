@@ -784,39 +784,57 @@
                 }
             }
 
+            // Tentukan angka pemenang sejak awal putaran
+            let finalWinnerNumber = 0;
+            do {
+                finalWinnerNumber = Math.floor(Math.random() * (maxRange - minRange + 1)) + minRange;
+            } while (preventDuplicates && drawnNumbers.includes(finalWinnerNumber));
+            const winnerPadded = String(finalWinnerNumber).padStart(digitCount, '0');
+
             let rollStep = 0;
-            const totalSteps = 36;
+            // Tambah total steps agar cukup waktu untuk berhenti satu-satu
+            const totalSteps = 30 + (digitCount * 8);
 
             function executeRollStep() {
-                slotSpans.forEach(span => {
-                    span.innerText = Math.floor(Math.random() * 10);
+                slotSpans.forEach((span, idx) => {
+                    // Tentukan di langkah ke berapa digit ini harus berhenti (kiri ke kanan)
+                    const lockStep = totalSteps - ((digitCount - idx) * 8);
+                    
+                    if (rollStep >= lockStep) {
+                        // Kunci angka jika sudah waktunya berhenti
+                        if (span.innerText !== winnerPadded[idx]) {
+                            span.innerText = winnerPadded[idx];
+                            span.parentElement.classList.remove('number-roll');
+                            // Efek flash halus saat digit terkunci
+                            span.parentElement.style.backgroundColor = 'rgba(212,175,55,0.2)';
+                            span.parentElement.style.borderColor = 'rgba(212,175,55,0.8)';
+                            setTimeout(() => {
+                                span.parentElement.style.backgroundColor = '';
+                                span.parentElement.style.borderColor = '';
+                            }, 400);
+                        }
+                    } else {
+                        // Masih mengacak
+                        span.innerText = Math.floor(Math.random() * 10);
+                    }
                 });
 
-                const isEndingPhase = rollStep > (totalSteps - 12);
+                const isEndingPhase = rollStep > (totalSteps - (digitCount * 8));
                 const stepProgress = rollStep / totalSteps;
                 playTickSound(isEndingPhase, stepProgress);
                 rollStep++;
 
                 if (rollStep < totalSteps) {
-                    let stepDelay = 45;
-                    if (rollStep > totalSteps - 12) {
-                        const slowProgress = (rollStep - (totalSteps - 12)) / 12;
-                        stepDelay = 45 + Math.pow(slowProgress, 2) * 220;
+                    let stepDelay = 40;
+                    if (isEndingPhase) {
+                        const slowProgress = (rollStep - (totalSteps - (digitCount * 8))) / (digitCount * 8);
+                        stepDelay = 40 + Math.pow(slowProgress, 2) * 150;
                     }
                     setTimeout(executeRollStep, stepDelay);
                 } else {
-                    // Final Roll Completion
-                    let finalWinnerNumber = 0;
-                    do {
-                        finalWinnerNumber = Math.floor(Math.random() * (maxRange - minRange + 1)) + minRange;
-                    } while (preventDuplicates && drawnNumbers.includes(finalWinnerNumber));
-
-                    const winnerPadded = String(finalWinnerNumber).padStart(digitCount, '0');
-                    slotSpans.forEach((span, idx) => {
-                        span.innerText = winnerPadded[idx];
-                        span.parentElement.classList.remove('number-roll', 'border-primary-container');
-                        span.parentElement.classList.add('bg-primary-container/20');
-                        setTimeout(() => span.parentElement.classList.remove('bg-primary-container/20'), 800);
+                    // Putaran selesai total
+                    slotSpans.forEach(span => {
+                        span.parentElement.classList.remove('border-primary-container');
                     });
 
                     // 🎊 Konfetti & sorak sorai langsung saat nomor muncul!
