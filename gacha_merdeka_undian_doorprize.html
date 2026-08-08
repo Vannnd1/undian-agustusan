@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html class="dark" lang="id">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Gacha Merdeka - Undian Doorprize</title>
+    
+    <!-- CDN Tailwind CSS & Google Fonts -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-primary": "#690003",
+                        "secondary-fixed-dim": "#c6c6c7",
+                        "surface-container": "#201f1f",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "surface-container-highest": "#353534",
+                        "on-primary-fixed": "#410001",
+                        "primary-fixed-dim": "#ffb4aa",
+                        "primary": "#ffb4aa",
+                        "surface-bright": "#3a3939",
+                        "on-secondary": "#2f3131",
+                        "secondary": "#c6c6c7",
+                        "tertiary-fixed": "#e4e2e1",
+                        "tertiary": "#c8c6c5",
+                        "on-tertiary-container": "#fbf8f8",
+                        "on-surface-variant": "#e9bcb6",
+                        "surface-tint": "#ffb4aa",
+                        "inverse-surface": "#e5e2e1",
+                        "on-error": "#690005",
+                        "secondary-fixed": "#e2e2e2",
+                        "error": "#ffb4ab",
+                        "secondary-container": "#454747",
+                        "on-primary-container": "#fff8f7",
+                        "tertiary-container": "#737272",
+                        "primary-fixed": "#ffdad5",
+                        "surface": "#131313",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-high": "#2a2a2a",
+                        "surface-dim": "#131313",
+                        "surface-variant": "#353534",
+                        "error-container": "#93000a",
+                        "surface-container-lowest": "#0e0e0e",
+                        "outline": "#af8782",
+                        "surface-container-low": "#1c1b1b",
+                        "on-background": "#e5e2e1",
+                        "inverse-on-surface": "#313030",
+                        "inverse-primary": "#c0000c",
+                        "on-secondary-container": "#b4b5b5",
+                        "on-surface": "#e5e2e1",
+                        "on-secondary-fixed-variant": "#454747",
+                        "primary-container": "#e70011",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "outline-variant": "#5f3f3a",
+                        "on-tertiary-fixed-variant": "#474746",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "background": "#131313",
+                        "on-primary-fixed-variant": "#930007",
+                        "on-tertiary": "#303030"
+                    },
+                    spacing: {
+                        "margin-desktop": "64px",
+                        "margin-mobile": "20px",
+                        "container-max": "1280px"
+                    },
+                    fontFamily: {
+                        "label-sm": ["Sora"],
+                        "display-lg": ["Sora"],
+                        "headline-lg": ["Sora"],
+                        "headline-md": ["Sora"],
+                        "label-bold": ["Sora"],
+                        "body-lg": ["Sora"],
+                        "body-md": ["Sora"]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* ===== MODERN PREMIUM — HUT RI KE-81 ===== */
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&display=swap');
+
+        * { font-family: 'Plus Jakarta Sans', sans-serif; }
+
+        body {
+            background: #0d0d0d;
+        }
+        .kinetic-bg {
+            background:
+                radial-gradient(ellipse 70% 50% at 15% 40%, rgba(185,14,32,0.12) 0%, transparent 100%),
+                radial-gradient(ellipse 50% 40% at 85% 70%, rgba(185,14,32,0.08) 0%, transparent 100%);
+        }
+        /* Hapus glow berlebihan */
+        .kinetic-glow { box-shadow: none; }
+        .gold-glow    { box-shadow: none; }
+
+        /* Bendera mini */
+        @keyframes flagWave {
+            0%,100% { transform: skewY(0deg) scaleX(1); }
+            40%     { transform: skewY(1deg) scaleX(1.015); }
+            70%     { transform: skewY(-0.8deg) scaleX(0.99); }
+        }
+        .flag-wave { animation: flagWave 2.4s ease-in-out infinite; transform-origin: left center; }
+
+        /* Dot pulse merah kecil */
+        @keyframes dotPulse {
+            0%,100% { opacity:1; transform:scale(1); }
+            50%     { opacity:0.5; transform:scale(0.75); }
+        }
+        .pulse-red { animation: dotPulse 1.8s ease-in-out infinite; }
+
+        /* Number roll */
+        .number-roll { animation: slotSpin 0.07s linear infinite; }
+        @keyframes slotSpin {
+            0%   { transform: translateY(-4%); opacity:0.85; }
+            50%  { transform: translateY(4%);  opacity:1; }
+            100% { transform: translateY(-4%); opacity:0.85; }
+        }
+
+        /* Modal pop */
+        @keyframes modalPop {
+            0%   { transform: scale(0.88) translateY(12px); opacity:0; }
+            100% { transform: scale(1)    translateY(0);    opacity:1; }
+        }
+        .animate-modal { animation: modalPop 0.35s cubic-bezier(0.34,1.56,0.64,1) forwards; }
+
+        /* Card glassmorphism */
+        .card-glass {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.09);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        /* Card merah dark subtle */
+        .card-ri {
+            background: rgba(18,4,6,0.8);
+            border: 1px solid rgba(185,14,32,0.25);
+            backdrop-filter: blur(20px);
+        }
+
+        /* Tombol utama — flat merah bersih */
+        .btn-merdeka {
+            background: #B90E20;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: background 0.2s, transform 0.12s, box-shadow 0.2s;
+            box-shadow: 0 2px 12px rgba(185,14,32,0.35), 0 1px 3px rgba(0,0,0,0.4);
+        }
+        .btn-merdeka:hover {
+            background: #D0102A;
+            box-shadow: 0 4px 20px rgba(185,14,32,0.5), 0 1px 4px rgba(0,0,0,0.5);
+        }
+        .btn-merdeka:active { transform: scale(0.975); }
+
+        /* Digit box neutral clean */
+        .digit-box {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: border-color 0.3s, background 0.3s;
+        }
+        .digit-box.rolling {
+            border-color: rgba(185,14,32,0.5);
+            background: rgba(185,14,32,0.06);
+        }
+        .digit-box.winner {
+            border-color: rgba(212,175,55,0.6);
+            background: rgba(212,175,55,0.06);
+        }
+
+        /* Input fields */
+        input[type=number] {
+            background: rgba(255,255,255,0.05) !important;
+            border: 1px solid rgba(255,255,255,0.1) !important;
+            color: white !important;
+            border-radius: 10px !important;
+        }
+        input[type=number]:focus {
+            border-color: rgba(185,14,32,0.6) !important;
+            outline: none !important;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(185,14,32,0.4); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(185,14,32,0.7); }
+
+        /* Sidebar */
+        .sidebar-ri {
+            background: rgba(12,3,5,0.92);
+            border: 1px solid rgba(185,14,32,0.2);
+            backdrop-filter: blur(24px);
+        }
+
+        /* Text gradient gold */
+        .text-gold {
+            background: linear-gradient(135deg, #D4AF37 0%, #F5D05E 50%, #D4AF37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body class="text-white min-h-screen flex flex-col justify-between relative overflow-x-hidden font-body-md select-none">
+
+    <!-- Confetti Overlay Canvas -->
+    <canvas id="confetti-canvas" class="fixed inset-0 pointer-events-none w-full h-full" style="z-index:9999;"></canvas>
+
+    <!-- Background subtle -->
+    <div class="fixed inset-0 kinetic-bg z-0 pointer-events-none"></div>
+
+    <!-- Header HUT RI -->
+    <header class="relative z-20 w-full flex flex-col">
+        <!-- Strip merah-putih atas -->
+        <div class="h-2 w-full" style="background: linear-gradient(90deg, #CE1126 50%, #ffffff 50%);"></div>
+        <div class="px-6 py-3 flex items-center justify-between" style="background: rgba(15,3,3,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(206,17,38,0.25);">
+            <!-- Logo kiri -->
+            <div class="flex items-center gap-3">
+                <!-- Bendera mini -->
+                <div class="flag-wave flex flex-col rounded overflow-hidden shadow-lg" style="width:36px; height:24px;">
+                    <div style="flex:1; background:#CE1126;"></div>
+                    <div style="flex:1; background:#ffffff;"></div>
+                </div>
+                <div>
+                    <div class="font-black text-base md:text-lg tracking-widest" style="color:#FFD700;">UNDIAN MERDEKA</div>
+                    <div class="text-[10px] tracking-[0.25em] uppercase font-semibold" style="color:rgba(255,255,255,0.45);">Dirgahayu RI Ke-81</div>
+                </div>
+            </div>
+            <!-- Controls kanan -->
+            <div class="flex items-center gap-2">
+                <button id="sound-toggle-btn" class="p-2 rounded-xl text-white hover:text-yellow-400 transition-all flex items-center justify-center" style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12);" title="Mute/Unmute Suara">
+                    <span id="sound-icon" class="material-symbols-outlined text-xl">volume_up</span>
+                </button>
+                <button id="fullscreen-btn" class="p-2 rounded-xl text-white hover:text-yellow-400 transition-all flex items-center justify-center" style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12);" title="Layar Penuh">
+                    <span class="material-symbols-outlined text-xl">fullscreen</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="relative z-10 flex-grow flex flex-col items-center justify-center w-full px-4 py-6">
+
+        <!-- Center Content Wrapper -->
+        <div class="flex flex-col items-center justify-center w-full max-w-2xl mx-auto space-y-5">
+
+            <!-- HEADER UTAMA -->
+            <div class="text-center space-y-3 w-full">
+                <!-- Badge resmi -->
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-[0.2em]" style="background:rgba(185,14,32,0.12); border:1px solid rgba(185,14,32,0.3); color:rgba(255,120,120,0.9);">
+                    <span class="w-1.5 h-1.5 rounded-full pulse-red" style="background:#B90E20; display:inline-block;"></span>
+                    Doorprize Resmi &bull; HUT RI Ke-81
+                </div>
+                <!-- Judul satu baris -->
+                <h1 class="font-black leading-tight" style="font-size: clamp(2.2rem, 7vw, 4.5rem); letter-spacing:-0.03em;">
+                    <span style="color:#ffffff;">UNDIAN </span><span style="background: linear-gradient(135deg, #D4AF37, #F0C040, #D4AF37); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">DOORPRIZE</span>
+                </h1>
+
+            </div>
+
+            <!-- KOTAK ANGKA UTAMA -->
+            <div class="relative w-full rounded-3xl overflow-hidden card-ri kinetic-glow" style="padding: 2rem 1.5rem 1.5rem;">
+                <!-- Ornamen atas: strip merah putih -->
+                <div class="absolute top-0 left-0 right-0 h-1.5 flex">
+                    <div class="flex-1" style="background:#CE1126;"></div>
+                    <div class="flex-1" style="background:#ffffff;"></div>
+                    <div class="flex-1" style="background:#CE1126;"></div>
+                    <div class="flex-1" style="background:#ffffff;"></div>
+                    <div class="flex-1" style="background:#CE1126;"></div>
+                    <div class="flex-1" style="background:#ffffff;"></div>
+                    <div class="flex-1" style="background:#CE1126;"></div>
+                    <div class="flex-1" style="background:#ffffff;"></div>
+                </div>
+                <!-- Background dalam -->
+                <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(206,17,38,0.08) 0%, transparent 70%);"></div>
+                <!-- Digit display -->
+                <div id="gacha-display" class="relative z-10 flex flex-wrap justify-center items-center gap-3 sm:gap-5 md:gap-7 my-2 mx-auto"></div>
+                <!-- Label bawah -->
+                <div class="relative z-10 mt-4 flex items-center justify-center gap-2">
+                    <span class="text-xs font-bold uppercase tracking-widest" style="color:rgba(255,255,255,0.3);">🎊 Klik tombol untuk mulai undian</span>
+                </div>
+            </div>
+
+            <!-- TOMBOL ROLL -->
+            <div class="w-full">
+                <button id="roll-btn" class="btn-merdeka w-full relative group py-5 font-black uppercase tracking-wider rounded-2xl overflow-hidden transition-all duration-300 transform hover:scale-[1.03] active:scale-95 flex items-center justify-center gap-3" style="font-size:clamp(1.1rem,3vw,1.6rem); color:white;">
+                    <span class="relative z-10 flex items-center gap-3">
+                        🥁 <span id="roll-btn-text">UNDI SEKARANG!</span> 🎯
+                    </span>
+                </button>
+            </div>
+
+            <!-- PENGATURAN RENTANG -->
+            <div class="w-full rounded-2xl p-5 space-y-4 card-ri">
+                <div class="flex items-center justify-between">
+                    <h3 class="font-bold text-sm uppercase tracking-widest flex items-center gap-2" style="color:#FFD700;">
+                        ⚙️ Pengaturan Nomor Peserta
+                    </h3>
+                    <span class="text-[11px]" style="color:rgba(255,255,255,0.35);">Nomor Kupon / Peserta</span>
+                </div>
+                <div class="flex gap-3">
+                    <div class="flex-1 space-y-1.5">
+                        <label class="text-[11px] font-bold uppercase tracking-widest" style="color:rgba(255,255,255,0.5);">Nomor Awal</label>
+                        <input id="min-range" class="w-full rounded-xl px-4 py-3 font-mono font-black text-white text-lg focus:outline-none transition-all" style="background:rgba(255,255,255,0.06); border:1.5px solid rgba(206,17,38,0.3); focus:border-color:#CE1126;" type="number" value="1" min="0" max="99999"/>
+                    </div>
+                    <div class="flex items-end pb-3 font-black text-xl" style="color:rgba(255,255,255,0.3);">—</div>
+                    <div class="flex-1 space-y-1.5">
+                        <label class="text-[11px] font-bold uppercase tracking-widest" style="color:rgba(255,255,255,0.5);">Nomor Akhir</label>
+                        <input id="max-range" class="w-full rounded-xl px-4 py-3 font-mono font-black text-white text-lg focus:outline-none transition-all" style="background:rgba(255,255,255,0.06); border:1.5px solid rgba(206,17,38,0.3);" type="number" value="100" min="1" max="99999"/>
+                    </div>
+                </div>
+                <!-- Toggle cegah ganda -->
+                <div class="flex items-center justify-between p-3 rounded-xl" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08);">
+                    <div>
+                        <p class="text-sm font-bold text-white">🚫 Cegah Nomor Ganda</p>
+                        <p class="text-[11px]" style="color:rgba(255,255,255,0.4);">Nomor yang sudah keluar tidak diundi lagi</p>
+                    </div>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                        <input id="unique-toggle" type="checkbox" class="sr-only peer" checked>
+                        <div class="w-11 h-6 rounded-full transition-all peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all" style="background:rgba(255,255,255,0.15);" id="toggle-track"></div>
+                    </label>
+                </div>
+                <button id="update-range-btn" class="w-full py-3 rounded-xl font-bold text-sm uppercase tracking-widest transition-all duration-200 hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2" style="background:rgba(206,17,38,0.2); border:1px solid rgba(206,17,38,0.4); color:#FF8A96;">
+                    <span class="material-symbols-outlined text-sm">check_circle</span>
+                    Terapkan Rentang
+                </button>
+            </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Right Sidebar Fixed: Daftar Pemenang -->
+    <div id="sidebar-history" class="fixed top-20 right-4 z-30 w-72 flex flex-col transition-all duration-300">
+        <!-- Toggle Button -->
+        <button id="sidebar-toggle-btn" class="self-end mb-2 px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all shadow-xl" style="background:rgba(206,17,38,0.85); border:1px solid rgba(255,215,0,0.3); color:white; backdrop-filter:blur(10px);" title="Tampilkan/Sembunyikan Riwayat">
+            🏆 <span id="sidebar-toggle-label">Pemenang</span>
+            <span id="history-count" class="px-1.5 py-0.5 rounded-full font-mono font-black" style="background:rgba(255,215,0,0.25); color:#FFD700;">0</span>
+        </button>
+        <!-- Panel -->
+        <div id="sidebar-panel" class="p-4 rounded-2xl space-y-3 shadow-2xl flex flex-col text-left w-full sidebar-ri" style="backdrop-filter:blur(16px);">
+            <div class="flex items-center justify-between pb-2" style="border-bottom:1px solid rgba(255,255,255,0.08);">
+                <h3 class="font-black text-sm uppercase tracking-widest flex items-center gap-2" style="color:#FFD700;">
+                    🏆 Daftar Pemenang
+                </h3>
+            </div>
+            <!-- Scrollable History Container -->
+            <div id="history-container" class="h-[320px] overflow-y-auto pr-1 space-y-2 rounded-xl p-2" style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07);">
+                <p id="empty-history-msg" class="text-xs text-center py-24 italic" style="color:rgba(255,255,255,0.3);">Belum ada pemenang yang diundi 🎊</p>
+                <!-- Items rendered by JS -->
+            </div>
+            <div class="flex gap-2 pt-1">
+                <button id="export-btn" class="flex-1 py-2 font-bold text-xs uppercase tracking-wider rounded-xl transition-all flex items-center justify-center gap-1.5" style="background:rgba(255,215,0,0.1); border:1px solid rgba(255,215,0,0.25); color:#FFD700;">
+                    <span class="material-symbols-outlined text-sm">download</span>
+                    Salin Log
+                </button>
+                <button id="clear-history-btn" class="px-3 py-2 font-bold text-xs rounded-xl transition-all flex items-center justify-center" style="background:rgba(206,17,38,0.15); border:1px solid rgba(206,17,38,0.3); color:#FF6B7A;" title="Hapus Semua Riwayat">
+                    <span class="material-symbols-outlined text-sm">delete</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Winner Modal HUT RI -->
+    <div id="winner-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden transition-opacity" style="background:rgba(0,0,0,0.85); backdrop-filter:blur(16px);">
+        <div class="relative w-full max-w-md mx-4 rounded-3xl p-8 text-center animate-modal overflow-hidden gold-glow" style="background: linear-gradient(145deg, #1a0505, #2d0808); border: 2px solid rgba(255,215,0,0.5);">
+            <!-- Strip merah putih atas -->
+            <div class="absolute top-0 left-0 right-0 h-2 flex rounded-t-3xl overflow-hidden">
+                <div class="flex-1" style="background:#CE1126;"></div>
+                <div class="flex-1" style="background:#ffffff;"></div>
+                <div class="flex-1" style="background:#CE1126;"></div>
+                <div class="flex-1" style="background:#ffffff;"></div>
+            </div>
+            <!-- Badge header -->
+            <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full font-black text-sm uppercase tracking-widest shadow-lg mb-4 mt-2" style="background: linear-gradient(135deg,#FFD700,#FFA500); color:#1a0505;">
+                🎉 SELAMAT PEMENANG! 🎉
+            </div>
+            <!-- Nomor pemenang -->
+            <div class="my-5 py-6 rounded-2xl relative overflow-hidden" style="background:rgba(255,255,255,0.04); border:1.5px solid rgba(255,215,0,0.3);">
+                <div class="text-[13px] font-bold uppercase tracking-widest mb-2" style="color:rgba(255,255,255,0.4);">Nomor Beruntung</div>
+                <div id="modal-winner-number" class="font-black tracking-widest font-mono" style="font-size:clamp(3rem,10vw,5rem); background:linear-gradient(135deg,#FFD700,#FFA500,#FFD700); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; filter:drop-shadow(0 0 20px rgba(255,215,0,0.6));">000</div>
+            </div>
+            <p class="text-sm mb-6" style="color:rgba(255,255,255,0.5);">Tunjukkan nomor ini kepada panitia acara 🙌</p>
+            <button id="close-modal-btn" class="btn-merdeka w-full py-4 font-black text-base uppercase tracking-wider rounded-xl shadow-lg transition-all transform active:scale-95" style="color:white;">
+                🎯 Lanjutkan Undian
+            </button>
+            <!-- Bintang dekorasi -->
+            <div class="absolute top-4 right-5 text-2xl" style="color:rgba(255,215,0,0.4);">✦</div>
+            <div class="absolute bottom-4 left-5 text-xl" style="color:rgba(255,215,0,0.3);">★</div>
+        </div>
+    </div>
+
+    <!-- Footer HUT RI -->
+    <footer class="relative z-20 w-full py-3 flex flex-col sm:flex-row justify-between items-center px-6 text-xs gap-2" style="background:rgba(10,2,2,0.9); border-top:1px solid rgba(206,17,38,0.2);">
+        <div style="color:rgba(255,255,255,0.35);">© 2026 Panitia HUT RI · Dirgahayu Indonesia Ke-81 🇮🇩</div>
+        <div class="font-bold" style="color:rgba(255,215,0,0.6);">Merdeka! ✦ Bersatu · Bekerja · Melaju</div>
+    </footer>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // State Management
+        let minRange = 1;
+        let maxRange = 100;
+        let isRolling = false;
+        let soundEnabled = true;
+
+        let winnersHistory = [];
+
+        // DOM Elements
+        const gachaDisplay = document.getElementById('gacha-display');
+        const rollBtn = document.getElementById('roll-btn');
+        const rollBtnText = document.getElementById('roll-btn-text');
+        const minInput = document.getElementById('min-range');
+        const maxInput = document.getElementById('max-range');
+        const updateRangeBtn = document.getElementById('update-range-btn');
+        const uniqueToggle = document.getElementById('unique-toggle');
+        const historyContainer = document.getElementById('history-container');
+        const emptyHistoryMsg = document.getElementById('empty-history-msg');
+        const historyCount = document.getElementById('history-count');
+        const exportBtn = document.getElementById('export-btn');
+        const clearHistoryBtn = document.getElementById('clear-history-btn');
+        const soundToggleBtn = document.getElementById('sound-toggle-btn');
+        const soundIcon = document.getElementById('sound-icon');
+        const fullscreenBtn = document.getElementById('fullscreen-btn');
+        
+        // Winner Modal Elements
+        const winnerModal = document.getElementById('winner-modal');
+        const modalWinnerNumber = document.getElementById('modal-winner-number');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+
+        // Web Audio API Context
+        let audioCtx = null;
+
+        function getAudioContext() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            return audioCtx;
+        }
+
+        // Roll Tick Sound — Ketukan Gendang Festif
+        function playTickSound(isSlowPhase = false, stepProgress = 0) {
+            if (!soundEnabled) return;
+            try {
+                const ctx = getAudioContext();
+                const now = ctx.currentTime;
+
+                const vol = 0.25 + stepProgress * 0.35; // makin keras saat melambat
+
+                if (isSlowPhase) {
+                    // Fase lambat: ketukan bass drum yang berat & dalam
+                    const bassOsc = ctx.createOscillator();
+                    const bassGain = ctx.createGain();
+                    bassOsc.type = 'sine';
+                    bassOsc.frequency.setValueAtTime(160, now);
+                    bassOsc.frequency.exponentialRampToValueAtTime(45, now + 0.12);
+                    bassGain.gain.setValueAtTime(vol * 1.2, now);
+                    bassGain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
+                    bassOsc.connect(bassGain);
+                    bassGain.connect(ctx.destination);
+                    bassOsc.start(now);
+                    bassOsc.stop(now + 0.13);
+
+                    // Snare tipis di atasnya
+                    const snareSize = Math.floor(ctx.sampleRate * 0.05);
+                    const snareBuf = ctx.createBuffer(1, snareSize, ctx.sampleRate);
+                    const snareData = snareBuf.getChannelData(0);
+                    for (let i = 0; i < snareSize; i++)
+                        snareData[i] = (Math.random() * 2 - 1) * Math.exp(-i / (ctx.sampleRate * 0.012));
+                    const snareSrc = ctx.createBufferSource();
+                    snareSrc.buffer = snareBuf;
+                    const snareBP = ctx.createBiquadFilter();
+                    snareBP.type = 'bandpass';
+                    snareBP.frequency.value = 2200;
+                    snareBP.Q.value = 0.9;
+                    const snareGain = ctx.createGain();
+                    snareGain.gain.setValueAtTime(vol * 0.5, now + 0.01);
+                    snareGain.gain.exponentialRampToValueAtTime(0.001, now + 0.06);
+                    snareSrc.connect(snareBP);
+                    snareBP.connect(snareGain);
+                    snareGain.connect(ctx.destination);
+                    snareSrc.start(now + 0.01);
+
+                } else {
+                    // Fase cepat: ketukan snare ringan & rapat
+                    const bufSize = Math.floor(ctx.sampleRate * 0.03);
+                    const buf = ctx.createBuffer(1, bufSize, ctx.sampleRate);
+                    const data = buf.getChannelData(0);
+                    for (let i = 0; i < bufSize; i++)
+                        data[i] = (Math.random() * 2 - 1) * Math.exp(-i / (ctx.sampleRate * 0.008));
+                    const src = ctx.createBufferSource();
+                    src.buffer = buf;
+                    const bp = ctx.createBiquadFilter();
+                    bp.type = 'bandpass';
+                    bp.frequency.value = 1800 + Math.random() * 400;
+                    bp.Q.value = 1.2;
+                    const g = ctx.createGain();
+                    g.gain.setValueAtTime(vol * 0.7, now);
+                    g.gain.exponentialRampToValueAtTime(0.001, now + 0.03);
+                    src.connect(bp);
+                    bp.connect(g);
+                    g.connect(ctx.destination);
+                    src.start(now);
+                }
+
+            } catch (e) {
+                console.log("Audio play tick error", e);
+            }
+        }
+
+        // Synthesize Multi-Theme Victory Sound
+        function playVictorySound() {
+            if (!soundEnabled) return;
+            try {
+                const ctx = getAudioContext();
+                const now = ctx.currentTime;
+
+                if (soundTheme === 'wheel') {
+                    // Gong + Brass Chord
+                    const oscGong = ctx.createOscillator();
+                    const gainGong = ctx.createGain();
+                    oscGong.type = 'sine';
+                    oscGong.frequency.setValueAtTime(180, now);
+                    oscGong.frequency.exponentialRampToValueAtTime(80, now + 1.5);
+                    gainGong.gain.setValueAtTime(0.6, now);
+                    gainGong.gain.exponentialRampToValueAtTime(0.001, now + 1.5);
+
+                    oscGong.connect(gainGong);
+                    gainGong.connect(ctx.destination);
+                    oscGong.start(now);
+
+                    const chord = [392.00, 493.88, 587.33, 783.99]; // G Major
+                    chord.forEach((f) => {
+                        const osc = ctx.createOscillator();
+                        const gain = ctx.createGain();
+                        osc.type = 'triangle';
+                        osc.frequency.setValueAtTime(f, now + 0.1);
+                        gain.gain.setValueAtTime(0, now + 0.1);
+                        gain.gain.linearRampToValueAtTime(0.2, now + 0.15);
+                        gain.gain.exponentialRampToValueAtTime(0.001, now + 1.2);
+
+                        osc.connect(gain);
+                        gain.connect(ctx.destination);
+                        osc.start(now + 0.1);
+                        osc.stop(now + 1.2);
+                    });
+
+                } else if (soundTheme === 'scifi') {
+                    // Sci-Fi Cyberpunk Win Riser & Synth Chord
+                    const chord = [293.66, 369.99, 440.00, 554.37, 880.00];
+                    chord.forEach((f) => {
+                        const osc = ctx.createOscillator();
+                        const gain = ctx.createGain();
+                        const filter = ctx.createBiquadFilter();
+                        osc.type = 'sawtooth';
+                        osc.frequency.setValueAtTime(f / 2, now);
+                        osc.frequency.exponentialRampToValueAtTime(f, now + 0.2);
+
+                        filter.type = 'lowpass';
+                        filter.frequency.setValueAtTime(400, now);
+                        filter.frequency.exponentialRampToValueAtTime(3000, now + 0.3);
+
+                        gain.gain.setValueAtTime(0.25, now);
+                        gain.gain.exponentialRampToValueAtTime(0.001, now + 1.2);
+
+                        osc.connect(filter);
+                        filter.connect(gain);
+                        gain.connect(ctx.destination);
+
+                        osc.start(now);
+                        osc.stop(now + 1.2);
+                    });
+
+                } else if (soundTheme === 'drumroll') {
+                    // Orchestral Cymbal Crash + Brass Triumph
+                    const bufferSize = ctx.sampleRate * 1.2;
+                    const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+                    const data = buffer.getChannelData(0);
+                    for (let i = 0; i < bufferSize; i++) data[i] = (Math.random() * 2 - 1);
+                    
+                    const crash = ctx.createBufferSource();
+                    crash.buffer = buffer;
+                    const crashFilter = ctx.createBiquadFilter();
+                    crashFilter.type = 'highpass';
+                    crashFilter.frequency.value = 3500;
+                    const crashGain = ctx.createGain();
+                    crashGain.gain.setValueAtTime(0.35, now);
+                    crashGain.gain.exponentialRampToValueAtTime(0.001, now + 1.2);
+                    
+                    crash.connect(crashFilter);
+                    crashFilter.connect(crashGain);
+                    crashGain.connect(ctx.destination);
+                    crash.start(now);
+
+                    const brassNotes = [
+                        { f: 392.00, t: 0, d: 0.15 },
+                        { f: 523.25, t: 0.15, d: 0.15 },
+                        { f: 659.25, t: 0.30, d: 0.15 },
+                        { f: 783.99, t: 0.45, d: 0.20 },
+                        { f: 1046.50, t: 0.65, d: 1.0 }
+                    ];
+
+                    brassNotes.forEach(n => {
+                        const osc = ctx.createOscillator();
+                        const gain = ctx.createGain();
+                        osc.type = 'sawtooth';
+                        osc.frequency.setValueAtTime(n.f, now + n.t);
+
+                        const filter = ctx.createBiquadFilter();
+                        filter.type = 'lowpass';
+                        filter.frequency.setValueAtTime(n.f * 3, now + n.t);
+
+                        gain.gain.setValueAtTime(0, now + n.t);
+                        gain.gain.linearRampToValueAtTime(0.3, now + n.t + 0.03);
+                        gain.gain.exponentialRampToValueAtTime(0.001, now + n.t + n.d);
+
+                        osc.connect(filter);
+                        filter.connect(gain);
+                        gain.connect(ctx.destination);
+
+                        osc.start(now + n.t);
+                        osc.stop(now + n.t + n.d);
+                    });
+
+                } else if (soundTheme === 'arcade') {
+                    // Retro 8-bit Win Theme
+                    const notes = [
+                        { f: 523.25, t: 0 },
+                        { f: 659.25, t: 0.08 },
+                        { f: 783.99, t: 0.16 },
+                        { f: 1046.50, t: 0.24 },
+                        { f: 783.99, t: 0.32 },
+                        { f: 1046.50, t: 0.40 },
+                        { f: 1318.51, t: 0.48 }
+                    ];
+
+                    notes.forEach(n => {
+                        const osc = ctx.createOscillator();
+                        const gain = ctx.createGain();
+                        osc.type = 'square';
+                        osc.frequency.setValueAtTime(n.f, now + n.t);
+
+                        gain.gain.setValueAtTime(0.2, now + n.t);
+                        gain.gain.exponentialRampToValueAtTime(0.001, now + n.t + (n.t === 0.48 ? 0.8 : 0.12));
+
+                        osc.connect(gain);
+                        gain.connect(ctx.destination);
+
+                        osc.start(now + n.t);
+                        osc.stop(now + n.t + (n.t === 0.48 ? 0.8 : 0.12));
+                    });
+
+                } else {
+                    // Casino Jackpot Ring
+                    const dings = [1567.98, 1760.00, 1975.53, 2093.00, 2349.32, 2637.02];
+                    dings.forEach((freq, i) => {
+                        const osc = ctx.createOscillator();
+                        const gain = ctx.createGain();
+                        osc.type = 'sine';
+                        osc.frequency.setValueAtTime(freq, now + i * 0.06);
+
+                        gain.gain.setValueAtTime(0.3, now + i * 0.06);
+                        gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.06 + 0.3);
+
+                        osc.connect(gain);
+                        gain.connect(ctx.destination);
+
+                        osc.start(now + i * 0.06);
+                        osc.stop(now + i * 0.06 + 0.3);
+                    });
+
+                    const chord = [523.25, 659.25, 783.99, 1046.50, 1318.51];
+                    chord.forEach(f => {
+                        const osc = ctx.createOscillator();
+                        const gain = ctx.createGain();
+                        osc.type = 'triangle';
+                        osc.frequency.setValueAtTime(f, now + 0.4);
+
+                        gain.gain.setValueAtTime(0, now + 0.4);
+                        gain.gain.linearRampToValueAtTime(0.25, now + 0.42);
+                        gain.gain.exponentialRampToValueAtTime(0.001, now + 1.4);
+
+                        osc.connect(gain);
+                        gain.connect(ctx.destination);
+
+                        osc.start(now + 0.4);
+                        osc.stop(now + 1.4);
+                    });
+                }
+            } catch (e) {
+                console.log("Audio victory error", e);
+            }
+        }
+
+        // Initialize Display Reel Digits based on maxRange digit length
+        function setupSlotDisplay(sampleNumber = 0) {
+            const digitLength = Math.max(String(maxRange).length, 3);
+            const paddedStr = String(sampleNumber).padStart(digitLength, '0');
+            
+            gachaDisplay.innerHTML = '';
+            for (let i = 0; i < digitLength; i++) {
+                const digitBox = document.createElement('div');
+                digitBox.className = "digit-box w-[90px] sm:w-[120px] md:w-[150px] text-center rounded-2xl overflow-hidden h-[130px] sm:h-[170px] md:h-[210px] flex items-center justify-center font-mono font-black text-6xl sm:text-8xl md:text-9xl text-white transition-all";
+                digitBox.style.cssText = "";
+                
+                const span = document.createElement('span');
+                span.id = `digit-slot-${i}`;
+                span.innerText = paddedStr[i] || '0';
+                
+                digitBox.appendChild(span);
+                gachaDisplay.appendChild(digitBox);
+            }
+        }
+
+        // Update Range Configurations
+        function updateRangeConfig() {
+            const minVal = parseInt(minInput.value);
+            const maxVal = parseInt(maxInput.value);
+
+            if (isNaN(minVal) || isNaN(maxVal)) {
+                alert('Masukkan nomor rentang yang valid!');
+                return;
+            }
+            if (minVal < 0 || maxVal <= minVal) {
+                alert('Nomor Min harus lebih kecil dari Max dan tidak boleh negatif.');
+                return;
+            }
+
+            minRange = minVal;
+            maxRange = maxVal;
+            setupSlotDisplay(minRange);
+
+            // Button micro-interaction
+            const originalText = updateRangeBtn.innerHTML;
+            updateRangeBtn.innerHTML = `<span class="material-symbols-outlined text-sm">check</span> Rentang Diperbarui!`;
+            updateRangeBtn.classList.add('border-primary', 'text-primary');
+            setTimeout(() => {
+                updateRangeBtn.innerHTML = originalText;
+                updateRangeBtn.classList.remove('border-primary', 'text-primary');
+            }, 1200);
+        }
+
+        // Roll Logic with Dynamic Deceleration Audio
+        function triggerGachaRoll() {
+            if (isRolling) return;
+
+            // Activate web audio context
+            getAudioContext();
+
+            // Check duplicate settings
+            const preventDuplicates = uniqueToggle.checked;
+            const drawnNumbers = winnersHistory.map(w => w.number);
+            
+            if (preventDuplicates) {
+                const totalPossible = maxRange - minRange + 1;
+                if (drawnNumbers.length >= totalPossible) {
+                    alert('Semua nomor dalam rentang ini sudah terpilih sebagai pemenang! Silakan ubah rentang atau hapus riwayat.');
+                    return;
+                }
+            }
+
+            isRolling = true;
+            rollBtn.disabled = true;
+            rollBtn.classList.add('opacity-70', 'cursor-not-allowed', 'scale-95');
+            rollBtnText.innerText = 'MENGUNDI...';
+
+            // Add spinning class to digits
+            const slotSpans = [];
+            const digitCount = Math.max(String(maxRange).length, 3);
+            for (let i = 0; i < digitCount; i++) {
+                const span = document.getElementById(`digit-slot-${i}`);
+                if (span) {
+                    span.parentElement.classList.add('number-roll', 'border-primary-container');
+                    slotSpans.push(span);
+                }
+            }
+
+            let rollStep = 0;
+            const totalSteps = 36;
+
+            function executeRollStep() {
+                slotSpans.forEach(span => {
+                    span.innerText = Math.floor(Math.random() * 10);
+                });
+
+                const isEndingPhase = rollStep > (totalSteps - 12);
+                const stepProgress = rollStep / totalSteps;
+                playTickSound(isEndingPhase, stepProgress);
+                rollStep++;
+
+                if (rollStep < totalSteps) {
+                    let stepDelay = 45;
+                    if (rollStep > totalSteps - 12) {
+                        const slowProgress = (rollStep - (totalSteps - 12)) / 12;
+                        stepDelay = 45 + Math.pow(slowProgress, 2) * 220;
+                    }
+                    setTimeout(executeRollStep, stepDelay);
+                } else {
+                    // Final Roll Completion
+                    let finalWinnerNumber = 0;
+                    do {
+                        finalWinnerNumber = Math.floor(Math.random() * (maxRange - minRange + 1)) + minRange;
+                    } while (preventDuplicates && drawnNumbers.includes(finalWinnerNumber));
+
+                    const winnerPadded = String(finalWinnerNumber).padStart(digitCount, '0');
+                    slotSpans.forEach((span, idx) => {
+                        span.innerText = winnerPadded[idx];
+                        span.parentElement.classList.remove('number-roll', 'border-primary-container');
+                        span.parentElement.classList.add('bg-primary-container/20');
+                        setTimeout(() => span.parentElement.classList.remove('bg-primary-container/20'), 800);
+                    });
+
+                    // 🎊 Konfetti & sorak sorai langsung saat nomor muncul!
+                    triggerConfetti();
+                    playCrowdCheer();
+
+                    recordWinner(winnerPadded);
+
+                    isRolling = false;
+                    rollBtn.disabled = false;
+                    rollBtn.classList.remove('opacity-70', 'cursor-not-allowed', 'scale-95');
+                    rollBtnText.innerText = 'PUTAR UNDIAN (ROLL)';
+
+                    playVictorySound();
+                    showWinnerModal(winnerPadded);
+                }
+            }
+
+            executeRollStep();
+        }
+
+        // Record Winner History
+        function recordWinner(numberStr) {
+            const timeStr = new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
+            const item = { number: parseInt(numberStr), formatted: numberStr, time: timeStr };
+            winnersHistory.unshift(item);
+            renderHistoryUI();
+        }
+
+        // Render Winner List UI
+        function renderHistoryUI() {
+            historyCount.innerText = `${winnersHistory.length}`;
+            
+            if (winnersHistory.length === 0) {
+                emptyHistoryMsg.classList.remove('hidden');
+                historyContainer.innerHTML = '';
+                historyContainer.appendChild(emptyHistoryMsg);
+                return;
+            }
+
+            emptyHistoryMsg.classList.add('hidden');
+            historyContainer.innerHTML = '';
+
+            winnersHistory.forEach((win, index) => {
+                const el = document.createElement('div');
+                el.className = "flex items-center justify-between p-2.5 bg-surface-container-high/60 border border-outline-variant/20 rounded-xl hover:border-primary-container/40 transition-all";
+                el.innerHTML = `
+                    <div class="flex items-center gap-3">
+                        <span class="w-6 h-6 rounded-full bg-primary-container/20 text-primary font-mono text-xs font-extrabold flex items-center justify-center">
+                            #${winnersHistory.length - index}
+                        </span>
+                        <div>
+                            <p class="font-mono font-black text-lg text-on-surface tracking-wider">${win.formatted}</p>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-mono text-outline">${win.time}</span>
+                `;
+                historyContainer.appendChild(el);
+            });
+        }
+
+        // Winner Modal Announcement
+        function showWinnerModal(numberStr) {
+            modalWinnerNumber.innerText = numberStr;
+            winnerModal.classList.remove('hidden');
+        }
+
+        closeModalBtn.addEventListener('click', () => {
+            winnerModal.classList.add('hidden');
+        });
+
+        // HTML5 Canvas Mega Confetti / Pinata Cannon
+        const canvas = document.getElementById('confetti-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        let animFrameId = null;
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        // Cannon spawn dari 8 titik sekeliling modal (tengah layar)
+        // Modal kira-kira 480px lebar x 420px tinggi, di tengah layar
+        function getModalCannons() {
+            const cx = canvas.width / 2;
+            const cy = canvas.height / 2;
+            const hw = 260; // half-width modal
+            const hh = 220; // half-height modal
+            return [
+                // 4 sudut modal → tembak ke luar diagonal
+                { x: cx - hw, y: cy - hh, ax: -1,  ay: -1  }, // sudut kiri atas
+                { x: cx + hw, y: cy - hh, ax:  1,  ay: -1  }, // sudut kanan atas
+                { x: cx - hw, y: cy + hh, ax: -1,  ay:  1  }, // sudut kiri bawah
+                { x: cx + hw, y: cy + hh, ax:  1,  ay:  1  }, // sudut kanan bawah
+                // 4 sisi tengah modal → tembak ke luar tegak lurus
+                { x: cx,      y: cy - hh, ax:  0,  ay: -1  }, // atas tengah
+                { x: cx,      y: cy + hh, ax:  0,  ay:  1  }, // bawah tengah
+                { x: cx - hw, y: cy,      ax: -1,  ay:  0  }, // kiri tengah
+                { x: cx + hw, y: cy,      ax:  1,  ay:  0  }, // kanan tengah
+            ];
+        }
+
+        const confettiColors = [
+            '#e70011','#ff4d5e','#ffffff','#ffd700','#ff9500',
+            '#00c9ff','#ff6bff','#39ff14','#ffb4aa','#ff3cac',
+            '#f7971e','#21d4fd','#b721ff','#08AEEA'
+        ];
+
+        function spawnParticlesFromCannon(cannon, count) {
+            const cx = typeof cannon.x === 'function' ? cannon.x() : cannon.x;
+            const cy = typeof cannon.y === 'function' ? cannon.y() : cannon.y;
+            const spread = 0.75;
+            for (let i = 0; i < count; i++) {
+                const speed = 8 + Math.random() * 16;
+                const angle = Math.atan2(cannon.ay, cannon.ax) + (Math.random() - 0.5) * Math.PI * spread;
+                const shape = Math.random() < 0.35 ? 'circle' : (Math.random() < 0.5 ? 'strip' : 'rect');
+                particles.push({
+                    x: cx, y: cy,
+                    vx: Math.cos(angle) * speed,
+                    vy: Math.sin(angle) * speed,
+                    size: Math.random() * 10 + 4,
+                    color: confettiColors[Math.floor(Math.random() * confettiColors.length)],
+                    rotation: Math.random() * 360,
+                    rSpeed: (Math.random() - 0.5) * 15,
+                    opacity: 1,
+                    shape: shape,
+                    wobble: Math.random() * Math.PI * 2,
+                    wobbleSpeed: 0.08 + Math.random() * 0.08
+                });
+            }
+        }
+
+        function triggerConfetti() {
+            particles = [];
+            if (animFrameId) cancelAnimationFrame(animFrameId);
+
+            const modalCannons = getModalCannons();
+
+            // Ledakan pertama — semua 8 cannon sekaligus dari tepi modal
+            modalCannons.forEach(c => spawnParticlesFromCannon(c, 30));
+
+            // Gelombang ke-2 setelah 150ms
+            setTimeout(() => {
+                const mc = getModalCannons();
+                mc.forEach(c => spawnParticlesFromCannon(c, 20));
+            }, 150);
+
+            // Gelombang ke-3 setelah 350ms
+            setTimeout(() => {
+                const mc = getModalCannons();
+                mc.forEach(c => spawnParticlesFromCannon(c, 15));
+            }, 350);
+
+            // Burst akhir dari 4 sudut saja, lebih kuat
+            setTimeout(() => {
+                const mc = getModalCannons().slice(0, 4); // 4 sudut
+                mc.forEach(c => spawnParticlesFromCannon(c, 25));
+            }, 600);
+
+            animateConfetti();
+        }
+
+        function animateConfetti() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            let active = false;
+
+            particles.forEach(p => {
+                p.wobble += p.wobbleSpeed;
+                p.x += p.vx + Math.sin(p.wobble) * 1.5;
+                p.y += p.vy;
+                p.vy += 0.4;         // gravity
+                p.vx *= 0.995;       // air resistance
+                p.rotation += p.rSpeed;
+                p.opacity -= 0.006;
+
+                if (p.opacity > 0 && p.y < canvas.height + 60) {
+                    active = true;
+                    ctx.save();
+                    ctx.translate(p.x, p.y);
+                    ctx.rotate((p.rotation * Math.PI) / 180);
+                    ctx.globalAlpha = Math.max(p.opacity, 0);
+                    ctx.fillStyle = p.color;
+
+                    if (p.shape === 'circle') {
+                        ctx.beginPath();
+                        ctx.arc(0, 0, p.size / 2, 0, Math.PI * 2);
+                        ctx.fill();
+                    } else if (p.shape === 'strip') {
+                        // Long thin ribbon
+                        ctx.fillRect(-p.size * 0.2, -p.size, p.size * 0.4, p.size * 2.5);
+                    } else {
+                        // Rectangle
+                        ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 1.4);
+                    }
+                    ctx.restore();
+                }
+            });
+
+            if (active) {
+                animFrameId = requestAnimationFrame(animateConfetti);
+            } else {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                animFrameId = null;
+            }
+        }
+
+        // Suara Pinata Meledak + Sorak Sorai Penonton
+        function playCrowdCheer() {
+            if (!soundEnabled) return;
+            try {
+                const actx = getAudioContext();
+                const now = actx.currentTime;
+
+                // ══════════════════════════════════════════
+                // 1. LEDAKAN PINATA (BOOM!) — impact keras
+                // ══════════════════════════════════════════
+                // Sub-bass thump (tubuh ledakan)
+                const boomOsc = actx.createOscillator();
+                const boomGain = actx.createGain();
+                boomOsc.type = 'sine';
+                boomOsc.frequency.setValueAtTime(120, now);
+                boomOsc.frequency.exponentialRampToValueAtTime(30, now + 0.35);
+                boomGain.gain.setValueAtTime(1.2, now);
+                boomGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.35);
+                boomOsc.connect(boomGain);
+                boomGain.connect(actx.destination);
+                boomOsc.start(now);
+                boomOsc.stop(now + 0.36);
+
+                // Ledakan noise (suara "POP" seperti balon pecah)
+                const popSize = Math.floor(actx.sampleRate * 0.18);
+                const popBuf = actx.createBuffer(1, popSize, actx.sampleRate);
+                const popData = popBuf.getChannelData(0);
+                for (let i = 0; i < popSize; i++) {
+                    popData[i] = (Math.random() * 2 - 1) * Math.exp(-i / (actx.sampleRate * 0.04));
+                }
+                const popSrc = actx.createBufferSource();
+                popSrc.buffer = popBuf;
+                const popFilter = actx.createBiquadFilter();
+                popFilter.type = 'lowpass';
+                popFilter.frequency.value = 800;
+                const popGain = actx.createGain();
+                popGain.gain.setValueAtTime(2.5, now);
+                popGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.18);
+                popSrc.connect(popFilter);
+                popFilter.connect(popGain);
+                popGain.connect(actx.destination);
+                popSrc.start(now);
+
+                // Crack / snap keras (high freq attack)
+                const crackSize = Math.floor(actx.sampleRate * 0.05);
+                const crackBuf = actx.createBuffer(1, crackSize, actx.sampleRate);
+                const crackData = crackBuf.getChannelData(0);
+                for (let i = 0; i < crackSize; i++) crackData[i] = (Math.random() * 2 - 1);
+                const crackSrc = actx.createBufferSource();
+                crackSrc.buffer = crackBuf;
+                const crackHP = actx.createBiquadFilter();
+                crackHP.type = 'highpass';
+                crackHP.frequency.value = 4000;
+                const crackGain = actx.createGain();
+                crackGain.gain.setValueAtTime(1.8, now);
+                crackGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.05);
+                crackSrc.connect(crackHP);
+                crackHP.connect(crackGain);
+                crackGain.connect(actx.destination);
+                crackSrc.start(now);
+
+                // ══════════════════════════════════════════
+                // 2. SORAK PENONTON — berlapis & masif
+                // ══════════════════════════════════════════
+                const crowdBands = [
+                    { freq: 350,  bw: 150, gain: 0.55, delay: 0.05, dur: 3.0 },
+                    { freq: 700,  bw: 300, gain: 0.45, delay: 0.08, dur: 2.8 },
+                    { freq: 1400, bw: 500, gain: 0.30, delay: 0.1,  dur: 2.5 },
+                    { freq: 2800, bw: 900, gain: 0.18, delay: 0.12, dur: 2.2 },
+                    { freq: 500,  bw: 200, gain: 0.50, delay: 0.0,  dur: 3.2 },
+                    { freq: 1100, bw: 400, gain: 0.35, delay: 0.15, dur: 2.6 },
+                ];
+                crowdBands.forEach(band => {
+                    const bufSize = actx.sampleRate * (band.dur + 0.3);
+                    const buf = actx.createBuffer(2, bufSize, actx.sampleRate);
+                    for (let ch = 0; ch < 2; ch++) {
+                        const data = buf.getChannelData(ch);
+                        for (let i = 0; i < bufSize; i++) data[i] = (Math.random() * 2 - 1);
+                    }
+                    const src = actx.createBufferSource();
+                    src.buffer = buf;
+                    const bp = actx.createBiquadFilter();
+                    bp.type = 'bandpass';
+                    bp.frequency.value = band.freq;
+                    bp.Q.value = band.freq / band.bw;
+                    const env = actx.createGain();
+                    env.gain.setValueAtTime(0, now + band.delay);
+                    env.gain.linearRampToValueAtTime(band.gain, now + band.delay + 0.12);
+                    env.gain.setValueAtTime(band.gain, now + band.delay + band.dur * 0.5);
+                    env.gain.exponentialRampToValueAtTime(0.0001, now + band.delay + band.dur);
+                    src.connect(bp);
+                    bp.connect(env);
+                    env.connect(actx.destination);
+                    src.start(now + band.delay);
+                    src.stop(now + band.delay + band.dur + 0.1);
+                });
+
+                // ══════════════════════════════════════════
+                // 3. TERIAKAN "YEAYYY!" — vokal masif
+                // ══════════════════════════════════════════
+                const yeaGroups = [
+                    { f: 220, t: 0.1, dur: 1.2 },
+                    { f: 260, t: 0.1, dur: 1.1 },
+                    { f: 300, t: 0.1, dur: 1.0 },
+                    { f: 180, t: 0.15, dur: 1.3 },
+                ];
+                yeaGroups.forEach(note => {
+                    [1, 2, 3, 4, 5, 6].forEach((h, hi) => {
+                        const osc = actx.createOscillator();
+                        const gain = actx.createGain();
+                        osc.type = hi === 0 ? 'sawtooth' : 'triangle';
+                        osc.frequency.setValueAtTime(note.f * h, now + note.t);
+                        osc.frequency.linearRampToValueAtTime(note.f * h * 1.08, now + note.t + 0.3);
+                        osc.frequency.linearRampToValueAtTime(note.f * h * 0.96, now + note.t + note.dur);
+                        const vol = (0.18 / (hi + 1));
+                        gain.gain.setValueAtTime(0, now + note.t);
+                        gain.gain.linearRampToValueAtTime(vol, now + note.t + 0.08);
+                        gain.gain.setValueAtTime(vol, now + note.t + note.dur * 0.6);
+                        gain.gain.exponentialRampToValueAtTime(0.0001, now + note.t + note.dur);
+                        osc.connect(gain);
+                        gain.connect(actx.destination);
+                        osc.start(now + note.t);
+                        osc.stop(now + note.t + note.dur + 0.05);
+                    });
+                });
+
+                // ══════════════════════════════════════════
+                // 4. TEROMPET PESTA — party horn kazoo
+                // ══════════════════════════════════════════
+                const hornNotes = [
+                    { f: 523,  t: 0.05, dur: 0.18 },
+                    { f: 659,  t: 0.23, dur: 0.18 },
+                    { f: 784,  t: 0.41, dur: 0.18 },
+                    { f: 1047, t: 0.59, dur: 0.35 },
+                    { f: 784,  t: 0.94, dur: 0.18 },
+                    { f: 1047, t: 1.12, dur: 0.5  },
+                ];
+                hornNotes.forEach(n => {
+                    const osc = actx.createOscillator();
+                    const buzz = actx.createOscillator();
+                    const gain = actx.createGain();
+                    const filter = actx.createBiquadFilter();
+                    osc.type = 'sawtooth';
+                    buzz.type = 'square';
+                    osc.frequency.setValueAtTime(n.f, now + n.t);
+                    buzz.frequency.setValueAtTime(n.f * 2.01, now + n.t);
+                    filter.type = 'lowpass';
+                    filter.frequency.value = n.f * 4;
+                    gain.gain.setValueAtTime(0, now + n.t);
+                    gain.gain.linearRampToValueAtTime(0.28, now + n.t + 0.02);
+                    gain.gain.setValueAtTime(0.28, now + n.t + n.dur - 0.04);
+                    gain.gain.exponentialRampToValueAtTime(0.0001, now + n.t + n.dur);
+                    osc.connect(filter);
+                    buzz.connect(filter);
+                    filter.connect(gain);
+                    gain.connect(actx.destination);
+                    osc.start(now + n.t); osc.stop(now + n.t + n.dur + 0.02);
+                    buzz.start(now + n.t); buzz.stop(now + n.t + n.dur + 0.02);
+                });
+
+                // ══════════════════════════════════════════
+                // 5. SIULAN SERENTAK — banyak & nyaring
+                // ══════════════════════════════════════════
+                [0.05, 0.15, 0.28, 0.45, 0.6, 0.8, 1.1, 1.4].forEach((t, i) => {
+                    const osc = actx.createOscillator();
+                    const gain = actx.createGain();
+                    const baseFreq = 2200 + (i % 3) * 350 + Math.random() * 200;
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(baseFreq, now + t);
+                    osc.frequency.linearRampToValueAtTime(baseFreq * 1.15, now + t + 0.2);
+                    osc.frequency.linearRampToValueAtTime(baseFreq * 0.98, now + t + 0.4);
+                    gain.gain.setValueAtTime(0.14, now + t);
+                    gain.gain.exponentialRampToValueAtTime(0.0001, now + t + 0.45);
+                    osc.connect(gain);
+                    gain.connect(actx.destination);
+                    osc.start(now + t);
+                    osc.stop(now + t + 0.5);
+                });
+
+                // ══════════════════════════════════════════
+                // 6. TEPUK TANGAN RIUH — cepat & keras
+                // ══════════════════════════════════════════
+                const clapTimes = [];
+                // Dua gelombang tepukan: cepat di awal, lebih lambat setelahnya
+                for (let i = 0; i < 10; i++) clapTimes.push(0.1 + i * 0.12);
+                for (let i = 0; i < 6; i++) clapTimes.push(1.4 + i * 0.18);
+                clapTimes.forEach(t => {
+                    const dur = 0.04 + Math.random() * 0.03;
+                    const bufSize = Math.floor(actx.sampleRate * 0.1);
+                    const buf = actx.createBuffer(1, bufSize, actx.sampleRate);
+                    const data = buf.getChannelData(0);
+                    for (let i = 0; i < bufSize; i++) {
+                        data[i] = (Math.random() * 2 - 1) * Math.exp(-i / (actx.sampleRate * 0.025));
+                    }
+                    const src = actx.createBufferSource();
+                    src.buffer = buf;
+                    const hp = actx.createBiquadFilter();
+                    hp.type = 'bandpass';
+                    hp.frequency.value = 1500 + Math.random() * 500;
+                    hp.Q.value = 0.8;
+                    const g = actx.createGain();
+                    g.gain.setValueAtTime(0.55, now + t);
+                    g.gain.exponentialRampToValueAtTime(0.0001, now + t + dur + 0.04);
+                    src.connect(hp);
+                    hp.connect(g);
+                    g.connect(actx.destination);
+                    src.start(now + t);
+                    src.stop(now + t + 0.12);
+                });
+
+            } catch(e) {
+                console.log('Cheer audio error', e);
+            }
+        }
+
+
+
+        // Copy / Export Log
+        exportBtn.addEventListener('click', () => {
+            if (winnersHistory.length === 0) {
+                alert('Belum ada riwayat pemenang untuk disalin.');
+                return;
+            }
+            const textLog = winnersHistory.map((w, i) => `#${winnersHistory.length - i}: Nomor ${w.formatted} (${w.time})`).join('\n');
+            
+            const dummy = document.createElement('textarea');
+            document.body.appendChild(dummy);
+            dummy.value = `--- DAFTAR PEMENANG UNDIAN MERDEKA ---\n` + textLog;
+            dummy.select();
+            document.execCommand('copy');
+            document.body.removeChild(dummy);
+
+            alert('Daftar pemenang berhasil disalin ke clipboard!');
+        });
+
+        // Clear History
+        clearHistoryBtn.addEventListener('click', () => {
+            if (winnersHistory.length === 0) return;
+            if (confirm('Apakah Anda yakin ingin menghapus seluruh riwayat pemenang?')) {
+                winnersHistory = [];
+                renderHistoryUI();
+            }
+        });
+
+
+
+        // Sound Toggle
+        soundToggleBtn.addEventListener('click', () => {
+            soundEnabled = !soundEnabled;
+            soundIcon.innerText = soundEnabled ? 'volume_up' : 'volume_off';
+            soundToggleBtn.classList.toggle('text-error', !soundEnabled);
+        });
+
+        // Fullscreen Toggle
+        fullscreenBtn.addEventListener('click', () => {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(err => {
+                    console.log(`Error attempting to enable fullscreen: ${err.message}`);
+                });
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                }
+            }
+        });
+
+        // Event Listeners
+        rollBtn.addEventListener('click', triggerGachaRoll);
+        updateRangeBtn.addEventListener('click', updateRangeConfig);
+
+        // Initial setup on window load
+        window.onload = () => {
+            setupSlotDisplay(minRange);
+        };
+
+        // Sidebar toggle
+        const sidebarToggleBtn = document.getElementById('sidebar-toggle-btn');
+        const sidebarPanel = document.getElementById('sidebar-panel');
+        const sidebarToggleLabel = document.getElementById('sidebar-toggle-label');
+        let sidebarOpen = true;
+
+        sidebarToggleBtn.addEventListener('click', () => {
+            sidebarOpen = !sidebarOpen;
+            sidebarPanel.style.display = sidebarOpen ? 'flex' : 'none';
+            sidebarToggleLabel.innerText = sidebarOpen ? 'Sembunyikan' : 'Riwayat';
+        });
+
+        // Auto-show sidebar when a winner is added
+        const _origRenderHistoryUI = renderHistoryUI;
+        // Patch: auto open sidebar on new winner
+        function autoOpenSidebar() {
+            if (!sidebarOpen) {
+                sidebarOpen = true;
+                sidebarPanel.style.display = 'flex';
+                sidebarToggleLabel.innerText = 'Sembunyikan';
+            }
+        }
+    </script>
+</body>
+</html>
