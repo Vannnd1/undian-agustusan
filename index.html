@@ -89,12 +89,12 @@
         * { font-family: 'Plus Jakarta Sans', sans-serif; }
 
         body {
-            background: #0d0d0d;
+            background: #fcfcfc;
         }
         .kinetic-bg {
             background:
-                radial-gradient(ellipse 70% 50% at 15% 40%, rgba(185,14,32,0.12) 0%, transparent 100%),
-                radial-gradient(ellipse 50% 40% at 85% 70%, rgba(185,14,32,0.08) 0%, transparent 100%);
+                radial-gradient(ellipse 70% 50% at 15% 40%, rgba(185,14,32,0.06) 0%, transparent 100%),
+                radial-gradient(ellipse 50% 40% at 85% 70%, rgba(185,14,32,0.04) 0%, transparent 100%);
         }
         /* Hapus glow berlebihan */
         .kinetic-glow { box-shadow: none; }
@@ -132,14 +132,14 @@
 
         /* Card glassmorphism */
         .card-glass {
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.09);
+            background: #ffffff;
+            border: 1px solid rgba(0,0,0,0.08);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
         }
         /* Card merah dark subtle */
         .card-ri {
-            background: rgba(18,4,6,0.8);
+            background: rgba(255,255,255,0.9);
             border: 1px solid rgba(185,14,32,0.25);
             backdrop-filter: blur(20px);
         }
@@ -178,9 +178,9 @@
 
         /* Input fields */
         input[type=number] {
-            background: rgba(255,255,255,0.05) !important;
-            border: 1px solid rgba(255,255,255,0.1) !important;
-            color: white !important;
+            background: #f3f4f6 !important;
+            border: 1px solid rgba(0,0,0,0.1) !important;
+            color: #111 !important;
             border-radius: 10px !important;
         }
         input[type=number]:focus {
@@ -196,7 +196,7 @@
 
         /* Sidebar */
         .sidebar-ri {
-            background: rgba(12,3,5,0.92);
+            background: rgba(255,255,255,0.95);
             border: 1px solid rgba(185,14,32,0.2);
             backdrop-filter: blur(24px);
         }
@@ -222,7 +222,7 @@
     <header class="relative z-20 w-full flex flex-col">
         <!-- Strip merah-putih atas -->
         <div class="h-2 w-full" style="background: linear-gradient(90deg, #CE1126 50%, #ffffff 50%);"></div>
-        <div class="px-6 py-3 flex items-center justify-between" style="background: rgba(15,3,3,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(206,17,38,0.25);">
+        <div class="px-6 py-3 flex items-center justify-between" style="background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(206,17,38,0.25);">
             <!-- Logo kiri -->
             <div class="flex items-center gap-3">
                 <!-- Bendera mini -->
@@ -231,16 +231,16 @@
                     <div style="flex:1; background:#ffffff;"></div>
                 </div>
                 <div>
-                    <div class="font-black text-base md:text-lg tracking-widest" style="color:#FFD700;">UNDIAN MERDEKA</div>
-                    <div class="text-[10px] tracking-[0.25em] uppercase font-semibold" style="color:rgba(255,255,255,0.45);">Dirgahayu RI Ke-81</div>
+                    <div class="font-black text-base md:text-lg tracking-widest" style="color:#B90E20;">UNDIAN MERDEKA</div>
+                    <div class="text-[10px] tracking-[0.25em] uppercase font-semibold" style="color:rgba(0,0,0,0.6);">Dirgahayu RI Ke-81</div>
                 </div>
             </div>
             <!-- Controls kanan -->
             <div class="flex items-center gap-2">
-                <button id="sound-toggle-btn" class="p-2 rounded-xl text-white hover:text-yellow-400 transition-all flex items-center justify-center" style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12);" title="Mute/Unmute Suara">
+                <button id="sound-toggle-btn" class="p-2 rounded-xl text-white hover:text-yellow-400 transition-all flex items-center justify-center" style="background:rgba(0,0,0,0.05); border:1px solid rgba(0,0,0,0.1);" title="Mute/Unmute Suara">
                     <span id="sound-icon" class="material-symbols-outlined text-xl">volume_up</span>
                 </button>
-                <button id="fullscreen-btn" class="p-2 rounded-xl text-white hover:text-yellow-400 transition-all flex items-center justify-center" style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12);" title="Layar Penuh">
+                <button id="fullscreen-btn" class="p-2 rounded-xl text-white hover:text-yellow-400 transition-all flex items-center justify-center" style="background:rgba(0,0,0,0.05); border:1px solid rgba(0,0,0,0.1);" title="Layar Penuh">
                     <span class="material-symbols-outlined text-xl">fullscreen</span>
                 </button>
             </div>
@@ -262,7 +262,7 @@
                 </div>
                 <!-- Judul satu baris -->
                 <h1 class="font-black leading-tight" style="font-size: clamp(2.2rem, 7vw, 4.5rem); letter-spacing:-0.03em;">
-                    <span style="color:#ffffff;">UNDIAN </span><span style="background: linear-gradient(135deg, #D4AF37, #F0C040, #D4AF37); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">DOORPRIZE</span>
+                    <span style="color:#111111;">UNDIAN </span><span style="background: linear-gradient(135deg, #D4AF37, #F0C040, #D4AF37); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">DOORPRIZE</span>
                 </h1>
 
             </div>
@@ -286,13 +286,13 @@
                 <div id="gacha-display" class="relative z-10 flex flex-wrap justify-center items-center gap-3 sm:gap-5 md:gap-7 my-2 mx-auto"></div>
                 <!-- Label bawah -->
                 <div class="relative z-10 mt-4 flex items-center justify-center gap-2">
-                    <span class="text-xs font-bold uppercase tracking-widest" style="color:rgba(255,255,255,0.3);">🎊 Klik tombol untuk mulai undian</span>
+                    <span class="text-xs font-bold uppercase tracking-widest" style="color:rgba(0,0,0,0.4);">🎊 Klik tombol untuk mulai undian</span>
                 </div>
             </div>
 
             <!-- TOMBOL ROLL -->
             <div class="w-full">
-                <button id="roll-btn" class="btn-merdeka w-full relative group py-5 font-black uppercase tracking-wider rounded-2xl overflow-hidden transition-all duration-300 transform hover:scale-[1.03] active:scale-95 flex items-center justify-center gap-3" style="font-size:clamp(1.1rem,3vw,1.6rem); color:white;">
+                <button id="roll-btn" class="btn-merdeka w-full relative group py-5 font-black uppercase tracking-wider rounded-2xl overflow-hidden transition-all duration-300 transform hover:scale-[1.03] active:scale-95 flex items-center justify-center gap-3" style="font-size:clamp(1.1rem,3vw,1.6rem); color:#ffffff;">
                     <span class="relative z-10 flex items-center gap-3">
                         🥁 <span id="roll-btn-text">UNDI SEKARANG!</span> 🎯
                     </span>
@@ -302,27 +302,27 @@
             <!-- PENGATURAN RENTANG -->
             <div class="w-full rounded-2xl p-5 space-y-4 card-ri">
                 <div class="flex items-center justify-between">
-                    <h3 class="font-bold text-sm uppercase tracking-widest flex items-center gap-2" style="color:#FFD700;">
+                    <h3 class="font-bold text-sm uppercase tracking-widest flex items-center gap-2" style="color:#B90E20;">
                         ⚙️ Pengaturan Nomor Peserta
                     </h3>
                     <span class="text-[11px]" style="color:rgba(255,255,255,0.35);">Nomor Kupon / Peserta</span>
                 </div>
                 <div class="flex gap-3">
                     <div class="flex-1 space-y-1.5">
-                        <label class="text-[11px] font-bold uppercase tracking-widest" style="color:rgba(255,255,255,0.5);">Nomor Awal</label>
-                        <input id="min-range" class="w-full rounded-xl px-4 py-3 font-mono font-black text-white text-lg focus:outline-none transition-all" style="background:rgba(255,255,255,0.06); border:1.5px solid rgba(206,17,38,0.3); focus:border-color:#CE1126;" type="number" value="1" min="0" max="99999"/>
+                        <label class="text-[11px] font-bold uppercase tracking-widest" style="color:rgba(0,0,0,0.5);">Nomor Awal</label>
+                        <input id="min-range" class="w-full rounded-xl px-4 py-3 font-mono font-black text-gray-900 text-lg focus:outline-none transition-all" style="background:rgba(255,255,255,0.06); border:1.5px solid rgba(206,17,38,0.3); focus:border-color:#CE1126;" type="number" value="1" min="0" max="99999"/>
                     </div>
-                    <div class="flex items-end pb-3 font-black text-xl" style="color:rgba(255,255,255,0.3);">—</div>
+                    <div class="flex items-end pb-3 font-black text-xl" style="color:rgba(0,0,0,0.4);">—</div>
                     <div class="flex-1 space-y-1.5">
-                        <label class="text-[11px] font-bold uppercase tracking-widest" style="color:rgba(255,255,255,0.5);">Nomor Akhir</label>
-                        <input id="max-range" class="w-full rounded-xl px-4 py-3 font-mono font-black text-white text-lg focus:outline-none transition-all" style="background:rgba(255,255,255,0.06); border:1.5px solid rgba(206,17,38,0.3);" type="number" value="100" min="1" max="99999"/>
+                        <label class="text-[11px] font-bold uppercase tracking-widest" style="color:rgba(0,0,0,0.5);">Nomor Akhir</label>
+                        <input id="max-range" class="w-full rounded-xl px-4 py-3 font-mono font-black text-gray-900 text-lg focus:outline-none transition-all" style="background:rgba(255,255,255,0.06); border:1.5px solid rgba(206,17,38,0.3);" type="number" value="100" min="1" max="99999"/>
                     </div>
                 </div>
                 <!-- Toggle cegah ganda -->
-                <div class="flex items-center justify-between p-3 rounded-xl" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08);">
+                <div class="flex items-center justify-between p-3 rounded-xl" style="background:rgba(255,255,255,0.04); border:1px solid rgba(0,0,0,0.08);">
                     <div>
-                        <p class="text-sm font-bold text-white">🚫 Cegah Nomor Ganda</p>
-                        <p class="text-[11px]" style="color:rgba(255,255,255,0.4);">Nomor yang sudah keluar tidak diundi lagi</p>
+                        <p class="text-sm font-bold text-gray-900">🚫 Cegah Nomor Ganda</p>
+                        <p class="text-[11px]" style="color:rgba(0,0,0,0.5);">Nomor yang sudah keluar tidak diundi lagi</p>
                     </div>
                     <label class="relative inline-flex items-center cursor-pointer">
                         <input id="unique-toggle" type="checkbox" class="sr-only peer" checked>
@@ -343,24 +343,24 @@
     <!-- Right Sidebar Fixed: Daftar Pemenang -->
     <div id="sidebar-history" class="fixed top-24 md:top-20 right-4 left-4 md:left-auto z-40 md:w-72 flex flex-col items-end transition-all duration-300">
         <!-- Toggle Button -->
-        <button id="sidebar-toggle-btn" class="self-end mb-2 px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all shadow-xl" style="background:rgba(206,17,38,0.85); border:1px solid rgba(255,215,0,0.3); color:white; backdrop-filter:blur(10px);" title="Tampilkan/Sembunyikan Riwayat">
+        <button id="sidebar-toggle-btn" class="self-end mb-2 px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all shadow-xl" style="background:rgba(206,17,38,0.85); border:1px solid rgba(255,215,0,0.3); color:#ffffff; backdrop-filter:blur(10px);" title="Tampilkan/Sembunyikan Riwayat">
             🏆 <span id="sidebar-toggle-label">Pemenang</span>
-            <span id="history-count" class="px-1.5 py-0.5 rounded-full font-mono font-black" style="background:rgba(255,215,0,0.25); color:#FFD700;">0</span>
+            <span id="history-count" class="px-1.5 py-0.5 rounded-full font-mono font-black" style="background:rgba(255,215,0,0.25); color:#B90E20;">0</span>
         </button>
         <!-- Panel -->
         <div id="sidebar-panel" class="p-4 rounded-2xl space-y-3 shadow-2xl flex flex-col text-left w-full sidebar-ri" style="backdrop-filter:blur(16px);">
             <div class="flex items-center justify-between pb-2" style="border-bottom:1px solid rgba(255,255,255,0.08);">
-                <h3 class="font-black text-sm uppercase tracking-widest flex items-center gap-2" style="color:#FFD700;">
+                <h3 class="font-black text-sm uppercase tracking-widest flex items-center gap-2" style="color:#B90E20;">
                     🏆 Daftar Pemenang
                 </h3>
             </div>
             <!-- Scrollable History Container -->
-            <div id="history-container" class="h-[320px] overflow-y-auto pr-1 space-y-2 rounded-xl p-2" style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07);">
-                <p id="empty-history-msg" class="text-xs text-center py-24 italic" style="color:rgba(255,255,255,0.3);">Belum ada pemenang yang diundi 🎊</p>
+            <div id="history-container" class="h-[320px] overflow-y-auto pr-1 space-y-2 rounded-xl p-2" style="background:rgba(0,0,0,0.03); border:1px solid rgba(0,0,0,0.08);">
+                <p id="empty-history-msg" class="text-xs text-center py-24 italic" style="color:rgba(0,0,0,0.4);">Belum ada pemenang yang diundi 🎊</p>
                 <!-- Items rendered by JS -->
             </div>
             <div class="flex gap-2 pt-1">
-                <button id="export-btn" class="flex-1 py-2 font-bold text-xs uppercase tracking-wider rounded-xl transition-all flex items-center justify-center gap-1.5" style="background:rgba(255,215,0,0.1); border:1px solid rgba(255,215,0,0.25); color:#FFD700;">
+                <button id="export-btn" class="flex-1 py-2 font-bold text-xs uppercase tracking-wider rounded-xl transition-all flex items-center justify-center gap-1.5" style="background:rgba(255,215,0,0.1); border:1px solid rgba(255,215,0,0.25); color:#B90E20;">
                     <span class="material-symbols-outlined text-sm">download</span>
                     Salin Log
                 </button>
@@ -373,7 +373,7 @@
 
     <!-- Winner Modal HUT RI -->
     <div id="winner-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden transition-opacity" style="background:rgba(0,0,0,0.85); backdrop-filter:blur(16px);">
-        <div class="relative w-full max-w-2xl mx-4 rounded-3xl p-10 md:p-14 text-center animate-modal overflow-hidden gold-glow" style="background: linear-gradient(145deg, #1a0505, #2d0808); border: 2px solid rgba(255,215,0,0.5);">
+        <div class="relative w-full max-w-2xl mx-4 rounded-3xl p-10 md:p-14 text-center animate-modal overflow-hidden gold-glow" style="background: linear-gradient(145deg, #ffffff, #fffdf8); border: 2px solid rgba(255,215,0,0.5);">
             <!-- Strip merah putih atas -->
             <div class="absolute top-0 left-0 right-0 h-3 flex rounded-t-3xl overflow-hidden">
                 <div class="flex-1" style="background:#CE1126;"></div>
@@ -387,11 +387,11 @@
             </div>
             <!-- Nomor pemenang -->
             <div class="my-6 py-10 rounded-2xl relative overflow-hidden" style="background:rgba(255,255,255,0.04); border:2px solid rgba(255,215,0,0.3);">
-                <div class="text-lg md:text-xl font-bold uppercase tracking-widest mb-4" style="color:rgba(255,255,255,0.4);">Nomor Beruntung</div>
-                <div id="modal-winner-number" class="font-black tracking-widest font-mono" style="font-size:clamp(5rem,15vw,9rem); line-height:1; background:linear-gradient(135deg,#FFD700,#FFA500,#FFD700); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; filter:drop-shadow(0 0 30px rgba(255,215,0,0.7));">000</div>
+                <div class="text-lg md:text-xl font-bold uppercase tracking-widest mb-4" style="color:rgba(0,0,0,0.5);">Nomor Beruntung</div>
+                <div id="modal-winner-number" class="font-black tracking-widest font-mono" style="font-size:clamp(5rem,15vw,9rem); line-height:1; background:linear-gradient(135deg,#FFD700,#FFA500,#FFD700); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; filter:drop-shadow(0 4px 10px rgba(0,0,0,0.15));">000</div>
             </div>
-            <p class="text-base md:text-lg mb-8" style="color:rgba(255,255,255,0.5);">Tunjukkan nomor ini kepada panitia acara 🙌</p>
-            <button id="close-modal-btn" class="btn-merdeka w-full py-5 font-black text-xl uppercase tracking-wider rounded-2xl shadow-lg transition-all transform active:scale-95" style="color:white;">
+            <p class="text-base md:text-lg mb-8" style="color:rgba(0,0,0,0.5);">Tunjukkan nomor ini kepada panitia acara 🙌</p>
+            <button id="close-modal-btn" class="btn-merdeka w-full py-5 font-black text-xl uppercase tracking-wider rounded-2xl shadow-lg transition-all transform active:scale-95" style="color:#ffffff;">
                 🎯 Lanjutkan Undian
             </button>
             <!-- Bintang dekorasi -->
@@ -401,7 +401,7 @@
     </div>
 
     <!-- Footer HUT RI -->
-    <footer class="relative z-20 w-full py-3 flex flex-col sm:flex-row justify-between items-center px-6 text-xs gap-2" style="background:rgba(10,2,2,0.9); border-top:1px solid rgba(206,17,38,0.2);">
+    <footer class="relative z-20 w-full py-3 flex flex-col sm:flex-row justify-between items-center px-6 text-xs gap-2" style="background:rgba(255,255,255,0.95); border-top:1px solid rgba(206,17,38,0.2);">
         <div style="color:rgba(255,255,255,0.35);">© 2026 Panitia HUT RI · Dirgahayu Indonesia Ke-81 🇮🇩</div>
         <div class="font-bold" style="color:rgba(255,215,0,0.6);">Merdeka! ✦ Bersatu · Bekerja · Melaju</div>
     </footer>
