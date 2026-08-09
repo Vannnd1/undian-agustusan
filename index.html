@@ -159,17 +159,21 @@
 
         /* Digit box neutral clean */
         .digit-box {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            transition: border-color 0.3s, background 0.3s;
+            background: rgba(255, 255, 255, 0.92);
+            border: 2px solid rgba(255, 255, 255, 1);
+            color: #111111 !important;
+            box-shadow: inset 0 2px 15px rgba(0,0,0,0.08), 0 6px 20px rgba(0,0,0,0.3);
+            transition: border-color 0.3s, background 0.3s, box-shadow 0.3s;
         }
         .digit-box.rolling {
-            border-color: rgba(185,14,32,0.5);
-            background: rgba(185,14,32,0.06);
+            border-color: rgba(185,14,32,0.8);
+            background: #ffffff;
+            box-shadow: inset 0 2px 15px rgba(185,14,32,0.1), 0 6px 20px rgba(0,0,0,0.3);
         }
         .digit-box.winner {
-            border-color: rgba(212,175,55,0.6);
-            background: rgba(212,175,55,0.06);
+            border-color: rgba(212,175,55,1);
+            background: linear-gradient(145deg, #ffffff, #fffce8);
+            box-shadow: inset 0 2px 15px rgba(212,175,55,0.15), 0 0 30px rgba(212,175,55,0.5);
         }
 
         /* Input fields */
@@ -709,7 +713,7 @@
             gachaDisplay.innerHTML = '';
             for (let i = 0; i < digitLength; i++) {
                 const digitBox = document.createElement('div');
-                digitBox.className = "digit-box w-[90px] sm:w-[120px] md:w-[150px] text-center rounded-2xl overflow-hidden h-[130px] sm:h-[170px] md:h-[210px] flex items-center justify-center font-mono font-black text-6xl sm:text-8xl md:text-9xl text-white transition-all";
+                digitBox.className = "digit-box w-[90px] sm:w-[120px] md:w-[150px] text-center rounded-2xl overflow-hidden h-[130px] sm:h-[170px] md:h-[210px] flex items-center justify-center font-mono font-black text-6xl sm:text-8xl md:text-9xl transition-all";
                 digitBox.style.cssText = "";
                 
                 const span = document.createElement('span');
